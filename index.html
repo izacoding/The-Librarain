@@ -35,6 +35,8 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link" href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" >Add Books</a>
+
+       <a class="nav-item nav-link" href="#" class="btn btn-primary" data-toggle="modal" data-target="checkitmodal">Add To Checkout</a>
     
     </div>
   </div>
@@ -43,8 +45,17 @@
 <!-- This is the card with the books stored inside -->
   <div class="container">
   <div  class="card">
-  <div class="card-body">
-    This is some text within a card body.
+  <div class="card-body" id="libraryBooks">
+    Libaray books must be added.
+  
+  </div>
+</div>
+<!-- this is the checkout card that displays the cards that are being checked out -->
+<div class="container">
+  <div  class="card">
+  <div class="card-body" id="checkout">
+    Checkout is empty.
+  
   </div>
 </div>
 
@@ -65,20 +76,20 @@
         <form>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Book Title</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <input type="text" class="form-control" id="Title">
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Author</label>
-            <input type="text" class="form-control" id="message-text">
+            <input type="text" class="form-control" id="Author">
             
             <div class="form-group">
             <label for="recipient-name" class="col-form-label">Pages</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <input type="text" class="form-control" id="Pages">
           </div>
 
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Published Date</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <input type="text" class="form-control" id="Year">
           </div>
             
 
@@ -87,11 +98,42 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button  id="addBook" type="button" class="btn btn-primary">Add Book To Libary</button>
+        <button  id="addBook" type="button" class="btn btn-primary" onclick="storeBook()">Add Book To Libary</button>
       </div>
     </div>
   </div>
-       
+    <!-- This is the checkout modal -->
+       <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="checkitmodal" data-whatever="@getbootstrap"></button> -->
+
+<div class="modal fade" id="checkout" tabindex="-1" role="dialog" aria-labelledby="checkitmodal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="checkitmodal">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">To Checkout</button>
+      </div>
+    </div>
+  </div>
+</div>
+
   
 
 
