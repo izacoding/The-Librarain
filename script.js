@@ -1,7 +1,7 @@
 
 
 var library = [];
-var checkout = [];
+var checkBooks = [];
 // declare an array for the books that are checked out
 
 function Book(t, a, p ,y){
@@ -59,10 +59,22 @@ function displayBooks(){
 // make a button to check out a book, it should open up a prompt or modal that asks only for the title
 // go back to brian for the rest of the javascript
 
+function sea(){
+	var searchBook = prompt("Enter the title of the book you want to check out");
+	var book;
+	for(var x = 0; x < library.length; x++){
+		if(library[x].Title == searchBook){
+			book = library[x];
+			checkBooks.push(book);
+			library.splice(x, 1);
+		}
+	}
+	checkout();
+}
 
 function checkout(){
-	document.getElementById("checkout").innerHTML = "There are " + library.length + " books in your checkout cart";
-	for(i = 0; i < library.length; i++){
+	document.getElementById("checkout").innerHTML = "There are " + checkBooks.length + " books in your checkout cart";
+	for(i = 0; i < checkBooks.length; i++){
 		// We are creating a element that prompts in the html below
 		var checkout = document.createElement("ul");
         // Create a list item that shows in html
@@ -71,10 +83,10 @@ function checkout(){
 		var li3 = document.createElement("li");
 		var li4 = document.createElement("li");
 // create a object that represent the books that are being checked out 
-        var cTitle = document.createTextNode(library[i].Title);
-		var cAuthor = document.createTextNode(library[i].Author);
-		var cPages = document.createTextNode(library[i].Pages);
-		var cPublished = document.createTextNode(library[i].Published);
+        var cTitle = document.createTextNode(checkBooks[i].Title);
+		var cAuthor = document.createTextNode(checkBooks[i].Author);
+		var cPages = document.createTextNode(checkBooks[i].Pages);
+		var cPublished = document.createTextNode(checkBooks[i].Published);
 		// attach each attribute's text into an li
         li1.appendChild(cTitle);
 		li2.appendChild(cAuthor);
@@ -86,7 +98,7 @@ function checkout(){
 		checkout.appendChild(li3);
 		checkout.appendChild(li4);
         // attach the big ul to the libary
-        document.getElementById("libraryBooks").append(checkout);
+        document.getElementById("checkout").append(checkout);
 	    displayBooks();
 	}
 
