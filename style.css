@@ -1,4 +1,8 @@
-body{
-	background-color: blue;
+body, .img {
+	background-color: #f2bd4b;
+}
 
+
+li{
+	list-style: none;
 }
